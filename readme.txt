@@ -1,54 +1,56 @@
-ÊµÑéÆ÷²Ä:
-	°¢²¨ÂÞSTM32F7¿ª·¢°å
-	
-ÊµÑéÄ¿µÄ:
-	Ñ§Ï°NRF24L01 2.4GÎÞÏßÄ£¿éµÄÊ¹ÓÃ.
-	
-Ó²¼þ×ÊÔ´:
-	1,DS0(Á¬½ÓÔÚPB1)  
-	2,´®¿Ú1(²¨ÌØÂÊ:115200,PA9/PA10Á¬½ÓÔÚ°åÔØUSB×ª´®¿ÚÐ¾Æ¬CH340ÉÏÃæ) 
-	3,ALIENTEK 2.8/3.5/4.3/7´çLCDÄ£¿é(°üÀ¨MCUÆÁºÍRGBÆÁ,¶¼Ö§³Ö) 
-	4,KEY0°´¼ü(Á¬½ÓÔÚPH3)/KEY1°´¼ü(Á¬½ÓÔÚPH2) 
-	5,NRF24L01Ä£¿é(SPI2(PB13/PB14/PB15)/IRQ(PI11)/CS(PG10)/CE(PG12)). 
-	
-ÊµÑéÏÖÏó:
-	±¾ÊµÑé¿ª»úºó,ÏÈ¼ì²âNRF24L01Ä£¿éÊÇ·ñ´æÔÚ£¬ÔÚ¼ì²âµ½NRF24L01Ä£¿éÖ®ºó£¬¸ù¾ÝKEY0ºÍKEY1µÄÉèÖÃÀ´¾ö¶¨
-	Ä£¿éµÄ¹¤×÷Ä£Ê½£¬ÔÚÉè¶¨ºÃ¹¤×÷Ä£Ê½Ö®ºó£¬¾Í»á²»Í£µÄ·¢ËÍ/½ÓÊÕÊý¾Ý£¬Í¬ÑùÓÃDS0À´Ö¸Ê¾³ÌÐòÕýÔÚÔËÐÐ¡£ 
-	
-×¢ÒâÊÂÏî:
-	1,4.3´çºÍ7´çÆÁÐèÒª±È½Ï´óµçÁ÷,USB¹©µç¿ÉÄÜ²»×ã,ÇëÓÃÍâ²¿µçÔ´ÊÊÅäÆ÷(ÍÆ¼öÍâ½Ó12V 1AµçÔ´).
-	2,±¾Àý³ÌÔÚLCD_Initº¯ÊýÀïÃæ(ÔÚlcd.c),ÓÃµ½ÁËprintf,Èç¹û²»³õÊ¼»¯´®¿Ú1,½«µ¼ÖÂÒº¾§ÎÞ·¨ÏÔÊ¾!! 
-	3,Ðè×Ô±¸NRF24L01Ä£¿é2¸ö£¬°¢²¨ÂÞSTM32¿ª·¢°å2¿é
-	4,NRF24L01Ä£¿é²åÔÚ¿ª·¢°åU4Î»ÖÃ(³¯Íâ²å). 
-	5,±¾ÊµÑéÐèÒª2Ì×ALIENTEK¿ª·¢°å²Å¿ÉÒÔÕý³£²âÊÔ!!!!!!Ò»¿é×ö·¢ËÍ,Ò»¿é×ö½ÓÊÕ.
-	 
+### Project hardware:
 
-²Î¿¼×ÊÁÏ£º°¢²¨ÂÞSTM32F7¿ª·¢Ö¸ÄÏ-¿âº¯Êý°æ±¾.pdf µÚËÄÊ®Ò»ÕÂ
+ - ADS131A04 Evaluation Module
+
+### Purpose:
+Learn how to interface the TI ADS131A04 and the Pic32 
+
+### Hardware resources:
+
+### Experimental observations:
+After the experiment is started, first check whether the NRF24L01 module exists. After detecting the NRF24L01 module, determine according to the settings of KEY0 and KEY1.
+The working mode of the module, after setting the working mode, will continuously send/receive data, and also use DS0 to indicate that the program is running.
+
+### Precautions:
 
 
--------------------------------------------------------------------------------------------
 
-¡ôÆäËûÖØÒªÁ¬½Ó£º
-  ¿ª·¢°å¹âÅÌ×ÊÁÏÏÂÔØµØÖ·£¨ÊÓÆµ+ÎÄµµ+Ô´ÂëµÈ£©£ºhttp://www.openedv.com/posts/list/13912.htm
+### Reference:                                                                                                      
+ADS131A0x 2- or 4-Chan, 24-Bit, 128-kSPS, Simultaneous-Sampling, Delta-Sigma ADC datasheet (Rev. D) `ads131a04.pdf`                                                                               
+ECE4760 SPI PIC32.pdf                                                                                            
+Example schematic TIDA-00835 Schematic and Block Diagram (Rev. A) `tidrmt4a.pdf`                                   
+PIC32MX1XX2XX-28-36-44-PIN-DS60001168K Family Data Sheet                                                    
+PICkit 3 In-Circuit Debugger Programmer User's Guide For MPLAB X IDE `52116a.pdf`                                   
+SBAU259A March 2016 Revised October 2016 ADS131A04 Evaluation Module User's Guide sbau259a.pdf                   
+Section 23. Serial Peripheral Interface (SPI) `61106G.pdf`                                                         
 
 
-¡ôÓÑÇéÌáÊ¾£ºÈç¹ûÄúÏëÒÔºó¼°Ê±Ãâ·ÑµÄÊÕµ½ÕýµãÔ­×ÓËùÓÐ¿ª·¢°å×ÊÁÏ¸üÐÂÔö¼ÓÍ¨Öª£¬Çë¹Ø×¢Î¢ÐÅ¹«ÖÚÆ½Ì¨£º
- 2ÖÖÌí¼Ó·½·¨£º£¨¶¯¶¯ÊÖÌáÉýÄúµÄÑ§Ï°Ð§ÂÊ£¬¾ªÏ²²»¶ÏÅ¶£©
-£¨1£©´ò¿ªÎ¢ÐÅ->Ìí¼ÓÅóÓÑ->¹«ÖÚºÅ->ÊäÈë¡°ÕýµãÔ­×Ó¡±->µã»÷¹Ø×¢
-£¨2£©´ò¿ªÎ¢ÐÅ->Ìí¼ÓÅóÓÑ->ÊäÈë¡°alientek_stm32"->µã»÷¹Ø×¢
- ¾ßÌåÎ¢ÐÅÌí¼Ó·½·¨£¬Çë²Î¿¼Ìû×Ó£ºhttp://www.openedv.com/posts/list/45157.htm
+
+
+
+-------------------------------------------------- -----------------------------------------
+
+â—† Other important connections:
+  Development board CD data download address (video + document + source code, etc.): http://www.openedv.com/posts/list/13912.htm
+
+
+â—†Friendly reminder: If you want to receive the notification of all the development board information update in the future, please pay attention to the WeChat public platform:
+ 2 ways to add: (Moving your hands to improve your learning efficiency, surprises constantly)
+(1) Open WeChat -> Add Friends -> Public Number -> Enter "Positive Point Atom" -> Click to follow
+(2) Open WeChat -> Add Friends -> Enter "alientek_stm32"->Click to follow
+ For specific WeChat addition methods, please refer to the post: http://www.openedv.com/posts/list/45157.htm
  
 
 
-						
 
-						ÌÔ±¦µêÆÌ£º http://openedv.taobao.com
-						           http://eboard.taobao.com
-						¹«Ë¾ÍøÕ¾£ºwww.alientek.com
-						¼¼ÊõÂÛÌ³£ºwww.openedv.com
-                                                Î¢ÐÅ¹«ÖÚÆ½Ì¨£ºÕýµãÔ­×Ó
-						µç»°£º020-38271790
-						´«Õæ£º020-36773971
-						¹ãÖÝÊÐÐÇÒíµç×Ó¿Æ¼¼ÓÐÏÞ¹«Ë¾
-						ÕýµãÔ­×Ó@ALIENTEK
-						     2016-6ÔÂ
+
+Taobao shop: http://openedv.taobao.com
+Http://eboard.taobao.com
+Company website: www.alientek.com
+Technical Forum: www.openedv.com
+                                                WeChat public platform: punctual atom
+Phone: 020-38271790
+Fax: 020-36773971
+Guangzhou Xingyi Electronic Technology Co., Ltd.
+Punctual atom @ALIENTEK
+2016-6 months
