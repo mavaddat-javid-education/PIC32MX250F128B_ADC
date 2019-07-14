@@ -1,6 +1,6 @@
 #ifndef __em_H
 #define __em_H
-#include "sys.h"
+//#include "sys.h"
 //#include "arm_math.h"
 
 typedef  float float32_t;
@@ -8,12 +8,6 @@ extern float32_t em_data_m1[200];
 extern float32_t em_data_m2[200];
 extern float32_t em_data_m3[200];
 extern float32_t em_data_m4[200];
-
-#define ADS_CS(n)  (n?HAL_GPIO_WritePin(GPIOC,GPIO_PIN_6,GPIO_PIN_SET):HAL_GPIO_WritePin(GPIOC,GPIO_PIN_6,GPIO_PIN_RESET))//SPI片选信号	   
-#define ADS_RESET(n)  (n?HAL_GPIO_WritePin(GPIOC,GPIO_PIN_7,GPIO_PIN_SET):HAL_GPIO_WritePin(GPIOC,GPIO_PIN_7,GPIO_PIN_RESET))//SPI片选信号	   
-#define LED(n) (n?HAL_GPIO_WritePin(GPIOB,GPIO_PIN_0,GPIO_PIN_SET):HAL_GPIO_WritePin(GPIOB,GPIO_PIN_0,GPIO_PIN_RESET))	//PB1置1 
-	
-
 
 #ifndef _ads131a04_h_
 #define _ads131a04_h_
@@ -41,7 +35,7 @@ extern float32_t em_data_m4[200];
 #define ADS131A04_STANDBY_COMMAND										0X0022
 #define ADS131A04_WAKEUP_COMMAND										0X0033
 #define ADS131A04_LOCK_COMMAND											0X0555
-#define ADS131A04_UNCLOCK_COMMAND										0X0655
+#define ADS131A04_UNLOCK_COMMAND										0X0655
 
 #define READ_REGISTER_COMMAND(address, register_count) 					(ADS131A04_READ_REGISTER_COMMAND_OPCODE | (address<<8) | register_count)
 //Please note that register_count tells A04 device register_count+1 registers to read
@@ -57,7 +51,7 @@ extern float32_t em_data_m4[200];
 #define ADS131A04_STANDBY_ACK											0X0022
 #define ADS131A04_WAKEUP_ACK											0X0033
 #define ADS131A04_LOCK_ACK												0X0555
-#define ADS131A04_UNCLOCK_ACK											0X0655
+#define ADS131A04_UNLOCK_ACK											0X0655
 
 #define WRITE_MULTIPLE_REGISTERS_ACK(address, register_count) 			(ADS131A04_WRITE_MULTIPLE_REGISTERS_RESPONSE_OPCODE | (address<<8) | register_count)
 #define WRITE_REGISTER_ACK(address, data) 								(ADS131A04_WRITE_REGISTER_RESPONSE_OPCODE | (address<<8) | data)
@@ -105,12 +99,14 @@ extern float32_t em_data_m4[200];
 #define ADS131_ADC3															0x13 //ADC Channel 3 Digital Gain Configuration
 #define ADS131_ADC4															0x14 //ADC Channel 4 Digital Gain Configuration
 
+#define CLK1_CONFIG(CLKSRC,CLK_DIV)                                         (CLKSRC<<7|(CLK_DIV&0b1110))
+
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 /*****************************************************
 * Local Prototypes
 *****************************************************/
 void ADS13_PowerOnInit(void);
-void Read_ADS131A0X_Value(u8 cnt);
+void Read_ADS131A0X_Value(uint8_t cnt);
 #endif
 
 void ADS131A0X_Init(void);
